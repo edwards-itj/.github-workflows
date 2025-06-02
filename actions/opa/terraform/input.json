@@ -1,0 +1,468 @@
+{
+  "format_version": "1.2",
+  "terraform_version": "1.12.1",
+  "planned_values": {
+    "root_module": {
+      "resources": [
+        {
+          "address": "azurerm_public_ip.deny",
+          "mode": "managed",
+          "type": "azurerm_public_ip",
+          "name": "deny",
+          "provider_name": "registry.terraform.io/hashicorp/azurerm",
+          "schema_version": 0,
+          "values": {
+            "allocation_method": "Static",
+            "ddos_protection_mode": "VirtualNetworkInherited",
+            "ddos_protection_plan_id": null,
+            "domain_name_label": null,
+            "domain_name_label_scope": null,
+            "edge_zone": null,
+            "idle_timeout_in_minutes": 4,
+            "ip_tags": null,
+            "ip_version": "IPv4",
+            "location": "westeurope",
+            "name": "pip-test-opa-terraform",
+            "public_ip_prefix_id": null,
+            "resource_group_name": "rg-opa-terraform",
+            "reverse_fqdn": null,
+            "sku": "Standard",
+            "sku_tier": "Regional",
+            "tags": null,
+            "timeouts": null,
+            "zones": null
+          },
+          "sensitive_values": {}
+        },
+        {
+          "address": "azurerm_resource_group.this",
+          "mode": "managed",
+          "type": "azurerm_resource_group",
+          "name": "this",
+          "provider_name": "registry.terraform.io/hashicorp/azurerm",
+          "schema_version": 0,
+          "values": {
+            "location": "westeurope",
+            "managed_by": null,
+            "name": "rg-opa-terraform",
+            "tags": null,
+            "timeouts": null
+          },
+          "sensitive_values": {}
+        }
+      ],
+      "child_modules": [
+        {
+          "resources": [
+            {
+              "address": "module.child_module_allow.azurerm_resource_group.this",
+              "mode": "managed",
+              "type": "azurerm_resource_group",
+              "name": "this",
+              "provider_name": "registry.terraform.io/hashicorp/azurerm",
+              "schema_version": 0,
+              "values": {
+                "location": "westeurope",
+                "managed_by": null,
+                "name": "rg-opa-terraform-allow",
+                "tags": null,
+                "timeouts": null
+              },
+              "sensitive_values": {}
+            }
+          ],
+          "address": "module.child_module_allow"
+        },
+        {
+          "resources": [
+            {
+              "address": "module.child_module_deny.azurerm_public_ip.deny",
+              "mode": "managed",
+              "type": "azurerm_public_ip",
+              "name": "deny",
+              "provider_name": "registry.terraform.io/hashicorp/azurerm",
+              "schema_version": 0,
+              "values": {
+                "allocation_method": "Static",
+                "ddos_protection_mode": "VirtualNetworkInherited",
+                "ddos_protection_plan_id": null,
+                "domain_name_label": null,
+                "domain_name_label_scope": null,
+                "edge_zone": null,
+                "idle_timeout_in_minutes": 4,
+                "ip_tags": null,
+                "ip_version": "IPv4",
+                "location": "westeurope",
+                "name": "pip-test-opa-terraform",
+                "public_ip_prefix_id": null,
+                "resource_group_name": "rg-opa-terraform-deny",
+                "reverse_fqdn": null,
+                "sku": "Standard",
+                "sku_tier": "Regional",
+                "tags": null,
+                "timeouts": null,
+                "zones": null
+              },
+              "sensitive_values": {}
+            },
+            {
+              "address": "module.child_module_deny.azurerm_resource_group.this",
+              "mode": "managed",
+              "type": "azurerm_resource_group",
+              "name": "this",
+              "provider_name": "registry.terraform.io/hashicorp/azurerm",
+              "schema_version": 0,
+              "values": {
+                "location": "westeurope",
+                "managed_by": null,
+                "name": "rg-opa-terraform-deny",
+                "tags": null,
+                "timeouts": null
+              },
+              "sensitive_values": {}
+            }
+          ],
+          "address": "module.child_module_deny"
+        }
+      ]
+    }
+  },
+  "resource_changes": [
+    {
+      "address": "azurerm_public_ip.deny",
+      "mode": "managed",
+      "type": "azurerm_public_ip",
+      "name": "deny",
+      "provider_name": "registry.terraform.io/hashicorp/azurerm",
+      "change": {
+        "actions": [
+          "create"
+        ],
+        "before": null,
+        "after": {
+          "allocation_method": "Static",
+          "ddos_protection_mode": "VirtualNetworkInherited",
+          "ddos_protection_plan_id": null,
+          "domain_name_label": null,
+          "domain_name_label_scope": null,
+          "edge_zone": null,
+          "idle_timeout_in_minutes": 4,
+          "ip_tags": null,
+          "ip_version": "IPv4",
+          "location": "westeurope",
+          "name": "pip-test-opa-terraform",
+          "public_ip_prefix_id": null,
+          "resource_group_name": "rg-opa-terraform",
+          "reverse_fqdn": null,
+          "sku": "Standard",
+          "sku_tier": "Regional",
+          "tags": null,
+          "timeouts": null,
+          "zones": null
+        },
+        "after_unknown": {
+          "fqdn": true,
+          "id": true,
+          "ip_address": true
+        },
+        "before_sensitive": false,
+        "after_sensitive": {}
+      }
+    },
+    {
+      "address": "azurerm_resource_group.this",
+      "mode": "managed",
+      "type": "azurerm_resource_group",
+      "name": "this",
+      "provider_name": "registry.terraform.io/hashicorp/azurerm",
+      "change": {
+        "actions": [
+          "create"
+        ],
+        "before": null,
+        "after": {
+          "location": "westeurope",
+          "managed_by": null,
+          "name": "rg-opa-terraform",
+          "tags": null,
+          "timeouts": null
+        },
+        "after_unknown": {
+          "id": true
+        },
+        "before_sensitive": false,
+        "after_sensitive": {}
+      }
+    },
+    {
+      "address": "module.child_module_allow.azurerm_resource_group.this",
+      "module_address": "module.child_module_allow",
+      "mode": "managed",
+      "type": "azurerm_resource_group",
+      "name": "this",
+      "provider_name": "registry.terraform.io/hashicorp/azurerm",
+      "change": {
+        "actions": [
+          "create"
+        ],
+        "before": null,
+        "after": {
+          "location": "westeurope",
+          "managed_by": null,
+          "name": "rg-opa-terraform-allow",
+          "tags": null,
+          "timeouts": null
+        },
+        "after_unknown": {
+          "id": true
+        },
+        "before_sensitive": false,
+        "after_sensitive": {}
+      }
+    },
+    {
+      "address": "module.child_module_deny.azurerm_public_ip.deny",
+      "module_address": "module.child_module_deny",
+      "mode": "managed",
+      "type": "azurerm_public_ip",
+      "name": "deny",
+      "provider_name": "registry.terraform.io/hashicorp/azurerm",
+      "change": {
+        "actions": [
+          "create"
+        ],
+        "before": null,
+        "after": {
+          "allocation_method": "Static",
+          "ddos_protection_mode": "VirtualNetworkInherited",
+          "ddos_protection_plan_id": null,
+          "domain_name_label": null,
+          "domain_name_label_scope": null,
+          "edge_zone": null,
+          "idle_timeout_in_minutes": 4,
+          "ip_tags": null,
+          "ip_version": "IPv4",
+          "location": "westeurope",
+          "name": "pip-test-opa-terraform",
+          "public_ip_prefix_id": null,
+          "resource_group_name": "rg-opa-terraform-deny",
+          "reverse_fqdn": null,
+          "sku": "Standard",
+          "sku_tier": "Regional",
+          "tags": null,
+          "timeouts": null,
+          "zones": null
+        },
+        "after_unknown": {
+          "fqdn": true,
+          "id": true,
+          "ip_address": true
+        },
+        "before_sensitive": false,
+        "after_sensitive": {}
+      }
+    },
+    {
+      "address": "module.child_module_deny.azurerm_resource_group.this",
+      "module_address": "module.child_module_deny",
+      "mode": "managed",
+      "type": "azurerm_resource_group",
+      "name": "this",
+      "provider_name": "registry.terraform.io/hashicorp/azurerm",
+      "change": {
+        "actions": [
+          "create"
+        ],
+        "before": null,
+        "after": {
+          "location": "westeurope",
+          "managed_by": null,
+          "name": "rg-opa-terraform-deny",
+          "tags": null,
+          "timeouts": null
+        },
+        "after_unknown": {
+          "id": true
+        },
+        "before_sensitive": false,
+        "after_sensitive": {}
+      }
+    }
+  ],
+  "configuration": {
+    "provider_config": {
+      "azurerm": {
+        "name": "azurerm",
+        "full_name": "registry.terraform.io/hashicorp/azurerm",
+        "expressions": {
+          "features": [
+            {}
+          ],
+          "subscription_id": {
+            "constant_value": "d0562237-de19-4716-bc0d-88b684f5f733"
+          }
+        }
+      }
+    },
+    "root_module": {
+      "resources": [
+        {
+          "address": "azurerm_public_ip.deny",
+          "mode": "managed",
+          "type": "azurerm_public_ip",
+          "name": "deny",
+          "provider_config_key": "azurerm",
+          "expressions": {
+            "allocation_method": {
+              "constant_value": "Static"
+            },
+            "location": {
+              "references": [
+                "azurerm_resource_group.this.location",
+                "azurerm_resource_group.this"
+              ]
+            },
+            "name": {
+              "constant_value": "pip-test-opa-terraform"
+            },
+            "resource_group_name": {
+              "references": [
+                "azurerm_resource_group.this.name",
+                "azurerm_resource_group.this"
+              ]
+            },
+            "sku": {
+              "constant_value": "Standard"
+            }
+          },
+          "schema_version": 0
+        },
+        {
+          "address": "azurerm_resource_group.this",
+          "mode": "managed",
+          "type": "azurerm_resource_group",
+          "name": "this",
+          "provider_config_key": "azurerm",
+          "expressions": {
+            "location": {
+              "constant_value": "West Europe"
+            },
+            "name": {
+              "constant_value": "rg-opa-terraform"
+            }
+          },
+          "schema_version": 0
+        }
+      ],
+      "module_calls": {
+        "child_module_allow": {
+          "source": "./module/resource_group",
+          "module": {
+            "resources": [
+              {
+                "address": "azurerm_resource_group.this",
+                "mode": "managed",
+                "type": "azurerm_resource_group",
+                "name": "this",
+                "provider_config_key": "azurerm",
+                "expressions": {
+                  "location": {
+                    "constant_value": "West Europe"
+                  },
+                  "name": {
+                    "constant_value": "rg-opa-terraform-allow"
+                  }
+                },
+                "schema_version": 0
+              }
+            ]
+          }
+        },
+        "child_module_deny": {
+          "source": "./module/public_ip",
+          "module": {
+            "resources": [
+              {
+                "address": "azurerm_public_ip.deny",
+                "mode": "managed",
+                "type": "azurerm_public_ip",
+                "name": "deny",
+                "provider_config_key": "azurerm",
+                "expressions": {
+                  "allocation_method": {
+                    "constant_value": "Static"
+                  },
+                  "location": {
+                    "references": [
+                      "azurerm_resource_group.this.location",
+                      "azurerm_resource_group.this"
+                    ]
+                  },
+                  "name": {
+                    "constant_value": "pip-test-opa-terraform"
+                  },
+                  "resource_group_name": {
+                    "references": [
+                      "azurerm_resource_group.this.name",
+                      "azurerm_resource_group.this"
+                    ]
+                  },
+                  "sku": {
+                    "constant_value": "Standard"
+                  }
+                },
+                "schema_version": 0
+              },
+              {
+                "address": "azurerm_resource_group.this",
+                "mode": "managed",
+                "type": "azurerm_resource_group",
+                "name": "this",
+                "provider_config_key": "azurerm",
+                "expressions": {
+                  "location": {
+                    "constant_value": "West Europe"
+                  },
+                  "name": {
+                    "constant_value": "rg-opa-terraform-deny"
+                  }
+                },
+                "schema_version": 0
+              }
+            ]
+          }
+        }
+      }
+    }
+  },
+  "relevant_attributes": [
+    {
+      "resource": "azurerm_resource_group.this",
+      "attribute": [
+        "name"
+      ]
+    },
+    {
+      "resource": "azurerm_resource_group.this",
+      "attribute": [
+        "location"
+      ]
+    },
+    {
+      "resource": "module.child_module_deny.azurerm_resource_group.this",
+      "attribute": [
+        "location"
+      ]
+    },
+    {
+      "resource": "module.child_module_deny.azurerm_resource_group.this",
+      "attribute": [
+        "name"
+      ]
+    }
+  ],
+  "timestamp": "2025-06-02T19:05:49Z",
+  "applyable": true,
+  "complete": true,
+  "errored": false
+}
