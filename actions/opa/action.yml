@@ -15,6 +15,10 @@ inputs:
   GH_TOKEN:
     description: 'GitHub token for authentication'
     required: true
+outputs:
+  opa_result:
+    description: 'Result of the OPA evaluation'
+    value: ${{ steps.opa_eval.outputs.OPA_RESULT }}
 
 runs:
   using: "composite"
