@@ -42,9 +42,10 @@ runs:
       run: |
         policy_path="${{ github.action_path }}/policy/"
         result=$(opa exec --decision terraform/deny --bundle $policy_path ./input.json | jq '.result[0].result')
+        echo "OPA_RESULT=$result" >> $GITHUB_ENV
+        echo $result
         if [ "$result" != "[]" ]; then
           echo "OPA policy denied the Terraform file."
-          echo "OPA_RESULT=$result" >> $GITHUB_ENV
           exit 1
         fi
       working-directory: ${{ github.action_path }}
