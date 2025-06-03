@@ -30,12 +30,25 @@ runs:
 
     # Optionally, fail if policy denies
     - name: Fail if denied
+      id: opa_eval
       shell: bash
       run: |
-        result=$(opa eval --format json --input ./input.json --data "./${{ inputs.policy_name }}/" "data.terraform.deny" | jq '.result[0].expressions[0].value')
+        result=$(opa exec --decision terraform/deny --bundle "${{ github.action_path }}/policy/${{ inputs.policy_name }}.rego" ./input.json | jq '.result[0].result')
         if [ "$result" != "[]" ]; then
           echo "OPA policy denied the Terraform file."
-          echo $result
+          echo "OPA_RESULT=$result" >> $GITHUB_ENV
           exit 1
         fi
       working-directory: ${{ github.action_path }}
+    
+    - uses: actions/github-script@v7
+      if: ${{ github.eveent_name == 'pull_request' }}
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+        script: |
+          github.rest.issues.createComment({
+            issue_number: context.issue.number,
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            body: ${{ steps.opa_eval.outputs.OPA_RESULT }}
+          })
