@@ -24,7 +24,7 @@ runs:
     - name: Run OPA Policy
       shell: bash
       run: |
-        ${{ inputs.tf_plan_json }} > ./input.json
+        echo ${{ inputs.tf_plan_json }} > ./input.json
         opa eval --format pretty --input ./input.json --data "./${{ inputs.policy_name }}/" "data.terraform.deny"
       working-directory: ${{ github.action_path }}
 
