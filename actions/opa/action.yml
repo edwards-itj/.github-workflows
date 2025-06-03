@@ -35,6 +35,7 @@ runs:
         result=$(opa eval --format json --input ./input.json --data "./${{ inputs.policy_name }}/" "data.terraform.deny" | jq '.result[0].expressions[0].value')
         if [ "$result" != "[]" ]; then
           echo "OPA policy denied the Terraform file."
+          echo $result
           exit 1
         fi
       working-directory: ${{ github.action_path }}
